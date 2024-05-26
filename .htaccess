@@ -1,0 +1,5 @@
+AuthName "Acesso restrito, digite seu usuário e senha:"
+AuthType Basic
+AuthUserFile /etc/apache2/.htpasswd
+Require valid-user
+
