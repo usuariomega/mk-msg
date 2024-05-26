@@ -82,8 +82,8 @@ sudo sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/All
 
 Segurança - Não mostrar versão do Apache
 ```sh
-sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
-sudo sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf
+sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-enabled/security.conf
+sudo sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-enabled/security.conf
 ```
 
 Reinicie o Apache
