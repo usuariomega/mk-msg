@@ -1,59 +1,96 @@
+![MK-MSG](https://github.com/usuariomega/mkmsg/assets/70543919/f0ea5018-c46d-4ccb-a538-debe50d3cde6)
+
+
+<br>
+
 # Sistema MK-MSG
 
 Sistema simples com integração entre MK-Auth e o sistema de envio de mensagens por WhatsApp.
-Isso foi necessário porque o envio de SMS no MK-Auth não funciona nas versões mais novas.
+<br>Isso foi necessário porque o envio de SMS no MK-Auth não funciona nas versões mais novas.
 
-O sistema só vai mostrar os dados do mês e ano atual.
+<br>O sistema só vai mostrar os dados do mês e ano atual.
 
-Instalar:
+<br>Instalar:
+<br>
 
-É necessário ter o sistema de WhatsApp instalado. 
-Por favor instale esse primeiro: https://github.com/MKCodec/Mwsm
+<br>É necessário ter o sistema de WhatsApp instalado. 
+<br>Por favor instale esse primeiro: https://github.com/MKCodec/Mwsm
 
-Instale o sistema MK-MSG:
 
-OBS: Eu recomendo fazer isso em uma máquina virtual nova. 
-Não é recomendado instalar na mesma máquina do MK-Auth.
+<br>Instale o sistema MK-MSG:
 
+<br>OBS: Recomendo fazer isso em uma máquina virtual nova. 
+<br>Não é recomendado instalar na mesma máquina do MK-Auth.
+
+<br>Instalar os pacotes:
+```sh
 sudo apt update
 sudo apt install apache2 apache2-utils sqlite3 php php-sqlite3 php-curl git
+```
+<br>
 
 
-		//Config se instalado em Ubuntu ou Debian
-		
-		git clone https://github.com/usuariomega/mkmsg.git
-		cd /var/www/html/mkmsg/
-		//Dar permissão para poder gravar no banco de dados
-		sudo chown www-data -R db/
+> [!NOTE]
+>Config se instalado em Ubuntu ou Debian
+```sh
+cd /var/www/html/
+sudo git clone https://github.com/usuariomega/mkmsg.git
+cd /var/www/html/mkmsg/
+```
+Dar permissão para poder gravar no banco de dados
+```sh
+sudo chown www-data -R db/
+```
+<br>
 
 
-		//Config se instalado em Mk-Auth
+> [!NOTE]
+> Config se instalado em Mk-Auth
+```sh
+cd /var/www/
+sudo git clone https://github.com/usuariomega/mkmsg.git
+cd /var/www/mkmsg/
+```
+Dar permissão para poder gravar no banco de dados
+```sh
+sudo chown www-data -R db/
+```
+<br><br>
 
-		cd /var/www/
-		git clone https://github.com/usuariomega/mkmsg.git
-		cd /var/www/mkmsg/
-		//Dar permissão para poder gravar no banco de dados
-		sudo chown www-data -R db/
 
-
-//Criar senha para proteger o acesso ao sistema
+<br>Criar senha para proteger o acesso ao sistema
+```sh
 sudo htpasswd -c /etc/apache2/.htpasswd admin
+```
 
-//Ativar o Apache para que leia o arquivo .htaccess e peça a senha ao acessar
+Ativar o Apache para que leia o arquivo .htaccess e peça a senha ao acessar
+```sh
 sudo sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+```
 
-//Segurança - Não mostrar versão do Apache
+Segurança - Não mostrar versão do Apache
+```sh
 sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
 sudo sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf
+```
 
-//Reinicie o Apache
+Reinicie o Apache
+```sh
 sudo service apache2 restart
+```
 
-//Edite o arquivo config e configure o nome do provedor e o site
-cd /var/www/html/mkmsg/    ou 
-cd /var/www/mkmsg/   
-
+Edite o arquivo config e configure o nome do provedor e o site
+```sh
+cd /var/www/html/mkmsg/
+```
+ou 
+```sh
+cd /var/www/mkmsg/
+```
+<br>Em seguida:
+```sh
 sudo nano config.php
+```
 
 
 As mensagens personalizadas você pode editar on-line pelo site.
