@@ -37,7 +37,7 @@ Sistema simples com integração entre MK-Auth e o sistema de envio de mensagens
 <br>Instalar os pacotes:
 ```sh
 sudo apt update
-sudo apt install apache2 apache2-utils sqlite3 php php-sqlite3 php-curl git
+sudo apt install apache2 apache2-utils sqlite3 php php-mysql php-sqlite3 php-curl git
 ```
 <br>
 
