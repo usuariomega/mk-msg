@@ -25,9 +25,7 @@ Sistema simples com integração entre MK-Auth e o sistema de envio de mensagens
 
 <br>É necessário ter o sistema de WhatsApp instalado. 
 <br>Por favor instale esse primeiro: https://github.com/MKCodec/Mwsm
-<br>OBS: Use o Mwsm versão 2.0.22
-<br>Instale normalmente a versão final e substitua todos os arquivos em /var/api/Mwsm
-<br>Pelos arquivos em: https://github.com/MKCodec/Mwsm/archive/refs/tags/v2.0.22.zip
+
 
 <br>Instale o sistema MK-MSG:
 
