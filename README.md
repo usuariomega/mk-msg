@@ -37,7 +37,7 @@ sudo apt update
 sudo apt install apache2 apache2-utils sqlite3 php php-mysql php-sqlite3 php-curl git
 ```
 <details>
-<summary>Se instalado em Ubuntu ou Debian:</summary>
+<summary> Se instalado em Ubuntu ou Debian: </summary>
 
 ```sh
 cd /var/www/html/
@@ -52,8 +52,7 @@ sudo chown www-data -R db/
 </details>
 
 <details>
-<summary>
-Se instalado em Mk-Auth</summary>
+<summary> Se instalado em Mk-Auth: </summary>
   
 ```sh
 cd /var/www/
