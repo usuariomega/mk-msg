@@ -26,10 +26,10 @@ OBS: O sistema só vai mostrar os dados do mês e ano atual.
 ### Como Instalar: 
 
  1. É necessário ter o sistema de WhatsApp instalado.
-Por favor instale primeiro: https://github.com/MKCodec/Mwsm
+<br>Por favor instale primeiro: https://github.com/MKCodec/Mwsm
 
  2. Instale o sistema MK-MSG:
-OBS: Recomendo fazer isso em uma máquina virtual nova. 
+<br>Recomendo fazer isso em uma máquina virtual nova. 
 
 ### Instalar os pacotes: 
 ```sh
@@ -125,7 +125,7 @@ quit;
 
 <br>
 
-### Depois será necessário mudar o IP do banco de dados. 
+### Será necessário mudar o IP do banco de dados. 
 Como o MariaDB do Mk-Auth é antigo, ele só permite adicionar um endereço de IP. Por padrão ele só roda em localhost não permitindo acesso externo. Mude para o IP local do seu MK-Auth.
 
 ```
@@ -146,7 +146,7 @@ Em seguida:
 sudo service mysql restart
 ```
 
-### Depois no arquivo config.php no sistema MK-MSG mude para:
+### No arquivo config.php no sistema MK-MSG mude para:
 
 //IP do MK-Auth
 <br>$servername = "192.168.0.10";
