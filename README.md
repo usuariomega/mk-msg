@@ -74,7 +74,10 @@ sudo htpasswd -c /etc/apache2/.htpasswd admin
 ```
 Essa senha será pedida ao acessar o sistema em http://ip/mkmsg
 Nesse caso acima, criaremos o usuario admin e a senha será definida após dar enter.
-
+### Ativar o Apache para que leia o arquivo .htaccess e peça a senha ao acessar
+```sh
+sudo sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+```
 
 ### Segurança - Não mostrar versão do Apache 
 ```sh
@@ -143,7 +146,7 @@ Em seguida:
 sudo service mysql restart
 ```
 
-Depois no arquivo config.php no sistema MK-MSG mude para:
+### Depois no arquivo config.php no sistema MK-MSG mude para:
 
 //IP do MK-Auth
 <br>$servername = "192.168.0.10";
