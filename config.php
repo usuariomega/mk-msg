@@ -30,7 +30,7 @@ $diasvencido= 3;
 //Quantos dias após pago
 $diaspago	= 3;
 
-//Não mexa abaixo baixo!!
+//Não mexa abaixo!!
 //Consultas SQL para buscar os clientes no prazo, vencidos e pagos
 $sqlnoprazo = "SELECT upper(vtab_titulos.nome_res) as nome_res, 
 			   REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
