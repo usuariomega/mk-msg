@@ -193,9 +193,9 @@ sudo service mysql restart
 <br>$diaspago	= 3;
 
 Exemplos:
-<br>Título vence dia 10, hoje é dia 7, será enviado a mensagem a todos que vencem no dia 10. Consulta SQL = (10 - 3).
-<br>Título venceu dia 04, hoje é dia 7, será enviado a mensagem a todos que venceram no dia 04. Consulta SQL = (04 + 3).
-<br>Título foi pago dia 12, hoje é dia 15, será enviado a mensagem a todos que pagaram no dia 12. Consulta SQL = (12 + 3).
+<br>Título vence dia 10, hoje é dia 7, será enviado a mensagem a todos que vencem no dia 10. Consulta SQL = (07 + 3).
+<br>Título venceu dia 04, hoje é dia 7, será enviado a mensagem a todos que venceram no dia 04. Consulta SQL = (07 - 3).
+<br>Título foi pago dia 12, hoje é dia 15, será enviado a mensagem a todos que pagaram no dia 12. Consulta SQL = (15 - 3).
 
 ### Configurando a automação:
 
@@ -213,12 +213,12 @@ Será enviado todos os dias as 9h para mensagens com títulos no prazo, 10h para
 
 OBS: Se a consulta não retornar títulos, não será enviado.
 
-Exemplo: Configurado dias no prazo para 3 dias, hoje é dia 13, será enviado a mensagem para todos que vencem no dia 10. 
+Exemplo: Configurado dias no prazo para 3 dias, hoje é dia 10, será enviado a mensagem para todos que vencem no dia 13. 
 
-**Se não houver títulos para o dia 10, não será enviado.** E assim por diante:
+**Se não houver títulos para o dia 13, não será enviado.** E assim por diante:
 
-- Dia 14 - 3 = Envia mensagem se existir título a vencer (no prazo) no dia 17
-- Dia 15 - 3 = Envia mensagem se existir título a vencer (no prazo) no dia 18
+- Dia 14 + 3 = Envia mensagem se existir título a vencer (no prazo) no dia 17
+- Dia 15 + 3 = Envia mensagem se existir título a vencer (no prazo) no dia 18
 
 </details>
 
