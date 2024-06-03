@@ -25,13 +25,19 @@ OBS: O sistema só vai mostrar os dados do mês e ano atual.
 
 ### Como Instalar: 
 
- 1. É necessário ter o sistema de WhatsApp instalado.
-<br>Por favor instale primeiro: https://github.com/MKCodec/Mwsm
+### 1. É necessário ter o sistema de WhatsApp instalado.
+Por favor instale primeiro: https://github.com/MKCodec/Mwsm
 
- 2. Instale o sistema MK-MSG:
-<br>Recomendo fazer isso em uma máquina virtual nova. 
+<br>
+
+### 2. Instale o sistema MK-MSG:
+Recomendo fazer isso em uma máquina virtual nova. 
+
+<details>
+<summary> Clique aqui para expandir </summary>
 
 ### Instalar os pacotes: 
+
 ```sh
 sudo apt update
 sudo apt install apache2 apache2-utils sqlite3 php php-mysql php-sqlite3 php-curl git
@@ -45,9 +51,10 @@ sudo git clone https://github.com/usuariomega/mkmsg.git
 cd /var/www/html/mkmsg/
 ```
 
-Dar permissão para poder gravar no banco de dados as mensagens personalizadas
+Dar permissão para poder gravar no banco de dados as mensagens personalizadas e salvar os logs dos envios
 ```sh
-sudo chown www-data -R db/
+sudo chown -R www-data:www-data db/
+sudo chown -R www-data:www-data logs/
 ```
 </details>
 
@@ -63,7 +70,8 @@ cd /var/www/mkmsg/
 Dar permissão para poder gravar no banco de dados as mensagens personalizadas
 
 ```sh
-sudo chown www-data -R db/
+sudo chown -R www-data:www-data db/
+sudo chown -R www-data:www-data logs/
 ```
 </details>
 
@@ -102,16 +110,20 @@ cd /var/www/mkmsg/
 ```sh
 sudo nano config.php
 ```
+</details>
 
+<br>
 
- 3. Configuração do acesso ao banco de dados do MK-Auth:
+### 3. Configuração do acesso ao banco de dados do MK-Auth:
 
 <details>
-<summary>Para poder ter acesso ao banco de dados, no servidor do MK-Auth faça:</summary>
+<summary> Clique aqui para expandir </summary>
 
-<br>Mantenha as aspas e mude o usuário e senha em: **nomedousuario** e **suasenha**
-<br>
-<br>Coloque o IP da sua máquina virtual onde roda o sistema MK-MSG em 192.168.0.20 (IP de exemplo, use o IP da sua VM).
+### Para poder ter acesso ao banco de dados, no servidor do MK-Auth faça:
+
+Mantenha as aspas e mude o usuário e senha em: **nomedousuario** e **suasenha**
+
+Coloque o IP da sua máquina virtual onde roda o sistema MK-MSG em 192.168.0.20 (IP de exemplo, use o IP da sua VM).
 
 ### Rode o comando abaixo para criar o usuário com permissão de leitura do banco, cole uma linha por vez:
 
@@ -163,8 +175,58 @@ sudo service mysql restart
 </details>
 
 <br>
+
+### 4. Configuração para automatizar os envios:
+
+<details>
+<summary> Clique aqui para expandir </summary>
+
+### Será necessário configurar a quantidade de dias antes e depois no arquivo config.php
+
+//Quantos dias antes do prazo
+<br>$diasnoprazo= 3;
+
+//Quantos dias após vencer
+<br>$diasvencido= 3;
+
+//Quantos dias após pago
+<br>$diaspago	= 3;
+
+Exemplos:
+<br>Título vence dia 10, hoje é dia 7, será enviado a mensagem a todos que vencem no dia 10. Consulta SQL = (10 - 3).
+<br>Título venceu dia 04, hoje é dia 7, será enviado a mensagem a todos que venceram no dia 04. Consulta SQL = (04 + 3).
+<br>Título foi pago dia 12, hoje é dia 15, será enviado a mensagem a todos que pagaram no dia 12. Consulta SQL = (12 + 3).
+
+### Configurando a automação:
+
+```
+sudo crontab -e
+```
+Adicione no final:
+```
+0 9  * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronnoprazo.php > /dev/null 2>&1
+0 10 * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronvencido.php > /dev/null 2>&1
+0 11 * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronpago.php > /dev/null 2>&1
+````
+
+Será enviado todos os dias as 9h para mensagens com títulos no prazo, 10h para mensagens com títulos vencidos e 11h para mensagens com títulos pagos.
+
+OBS: Se a consulta não retornar títulos, não será enviado.
+
+Exemplo: Configurado dias no prazo para 3 dias, hoje é dia 13, será enviado a mensagem para todos que vencem no dia 10. 
+
+**Se não houver títulos para o dia 10, não será enviado.** E assim por diante:
+
+- Dia 14 - 3 = Envia mensagem se existir título a vencer (no prazo) no dia 17
+- Dia 15 - 3 = Envia mensagem se existir título a vencer (no prazo) no dia 18
+
+</details>
+
+<br>
 <br>
 
-As mensagens personalizadas você pode editar on-line pelo site.
+### 5. Todos os logs estarão em http://ip/mkmsg/logs
 
-*Acesse o sistema em http://ip/mkmsg*
+### 6. As mensagens personalizadas de envio você pode editar on-line pelo site.
+
+### 7. **Acesse o sistema em http://ip/mkmsg**

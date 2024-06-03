@@ -85,6 +85,12 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/pago")) 	{ mkdir("$dir/logs/" .$month. "/pago"); }
+
+   				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
+                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome,20) . $err . $response ."\n", FILE_APPEND);
             	sleep(rand(30, 300));
             }
 
@@ -157,6 +163,12 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/pago")) 	{ mkdir("$dir/logs/" .$month. "/pago"); }
+
+   				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
+                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome[$num],20) . $err . $response ."\n", FILE_APPEND);
                 $existesel = 1;
             	sleep(rand(30, 300));
             }

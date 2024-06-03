@@ -36,9 +36,9 @@ if (!empty($_POST)) {
     if (isset($_POST['posttodos'])) {
 
         $db = new SQLite3('db/msgdb.sqlite3');
-        $sql = "SELECT * FROM msgnoprazo";
+        $sql = "SELECT * FROM msgvencido";
         $result = $db->query($sql);
-        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgnoprazo = $row['msg'];}
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgvencido = $row['msg'];}
         unset($db);
 
         if (ob_get_level() == 0) {ob_start();}
@@ -47,7 +47,7 @@ if (!empty($_POST)) {
 
             $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
             $substituir = array($provedor, $nome, $datavenc, $linhadig, $qrcode, $site, '\1 \2');
-            $msg = preg_replace($buscar, $substituir, $msgnoprazo);
+            $msg = preg_replace($buscar, $substituir, $msgvencido);
 
             if (isset($_POST['posttodos'])) {
 
@@ -85,6 +85,12 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/vencido")) 	{ mkdir("$dir/logs/" .$month. "/vencido"); }
+
+   				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
+                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome,20) . $err . $response ."\n", FILE_APPEND);
             	sleep(rand(30, 300));
             }
 
@@ -106,9 +112,9 @@ if (!empty($_POST)) {
         $check = $_POST['check'];
 
         $db = new SQLite3('db/msgdb.sqlite3');
-        $sql = "SELECT * FROM msgnoprazo";
+        $sql = "SELECT * FROM msgvencido";
         $result = $db->query($sql);
-        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgnoprazo = $row['msg'];}
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgvencido = $row['msg'];}
         unset($db);
 
         $existesel = 0;
@@ -119,7 +125,7 @@ if (!empty($_POST)) {
 
             $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
             $substituir = array($provedor, $nome[$num], $datavenc[$num], $linhadig[$num], $qrcode[$num], $site, '\1 \2');
-            $msg = preg_replace($buscar, $substituir, $msgnoprazo);
+            $msg = preg_replace($buscar, $substituir, $msgvencido);
 
             if ($check[$num] == "1") {
 
@@ -157,6 +163,12 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/vencido")) 	{ mkdir("$dir/logs/" .$month. "/vencido"); }
+
+   				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
+                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome[$num],20) . $err . $response ."\n", FILE_APPEND);
                 $existesel = 1;
             	sleep(rand(30, 300));
             }
