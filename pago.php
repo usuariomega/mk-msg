@@ -85,7 +85,7 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg'; $month  = date("Y-m");
 				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
 				if (!is_dir("$dir/logs/" .$month. "/pago")) 	{ mkdir("$dir/logs/" .$month. "/pago"); }
 
@@ -163,7 +163,7 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg/'; $month  = date("Y-m");
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg'; $month  = date("Y-m");
 				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
 				if (!is_dir("$dir/logs/" .$month. "/pago")) 	{ mkdir("$dir/logs/" .$month. "/pago"); }
 
