@@ -91,6 +91,21 @@ Dar permissão ao Apparmor para que o PHP possa ler e gravar no banco de dados a
 sed -i 's/}$/        \/var\/www\/mkmsg\/** rwk, }/g' /etc/apparmor.d/usr.sbin.php-fpm7.3
 sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.php-fpm7.3
 ```
+
+Permitir que o Mk-Auth deixe acessar o endereço /mkmsg (MK-Auth 23 em diante)
+
+```sh
+sudo nano /var/www/.htaccess
+```
+
+Apague a ultima linha:
+
+```sh
+RewriteRule ^([a-zA-Z0-9\/]+)$ index.hhvm?$1 [NC,L]
+```
+
+Em seguida Ctrl + X para salvar. Aperte (Y ou S) + enter para salvar. (Depende do idioma do sistema operacional).
+
 </details>
 
 <br>
