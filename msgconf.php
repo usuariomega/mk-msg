@@ -11,8 +11,11 @@
 if (!empty($_POST)) {
     if (isset($_POST['postnoprazo'])) {
 		$db = new SQLite3('db/msgdb.sqlite3', SQLITE3_OPEN_READWRITE);
+		$db->busyTimeout(5000);
+		$db->exec('PRAGMA journal_mode = WAL;');
 		$sql = "DELETE FROM msgnoprazo; INSERT INTO msgnoprazo VALUES('".($_POST['msgnoprazo'])."');";
 		$result = $db->exec($sql);
+		$db->close();
 		unset($db);
     }
 }
@@ -20,8 +23,11 @@ if (!empty($_POST)) {
 if (!empty($_POST)) {
     if (isset($_POST['postvencido'])) {
 		$db = new SQLite3('db/msgdb.sqlite3', SQLITE3_OPEN_READWRITE);
+		$db->busyTimeout(5000);
+		$db->exec('PRAGMA journal_mode = WAL;');
 		$sql = "DELETE FROM msgvencido; INSERT INTO msgvencido VALUES('".($_POST['msgvencido'])."');";
 		$result = $db->exec($sql);
+		$db->close();
 		unset($db);
     }
 }
@@ -29,28 +35,40 @@ if (!empty($_POST)) {
 if (!empty($_POST)) {
     if (isset($_POST['postpago'])) {
 		$db = new SQLite3('db/msgdb.sqlite3', SQLITE3_OPEN_READWRITE);
+		$db->busyTimeout(5000);
+		$db->exec('PRAGMA journal_mode = WAL;');
 		$sql = "DELETE FROM msgpago; INSERT INTO msgpago VALUES('".($_POST['msgpago'])."');";
 		$result = $db->exec($sql);
+		$db->close();
 		unset($db);
     }
 }
 
 $db = new SQLite3('db/msgdb.sqlite3');
+$db->busyTimeout(5000);
+$db->exec('PRAGMA journal_mode = WAL;');
 $sql = "SELECT * FROM msgnoprazo";
 $result = $db->query($sql);
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgnoprazo 	= $row['msg'];}
+$db->close();
 unset($db);
 
 $db = new SQLite3('db/msgdb.sqlite3');
+$db->busyTimeout(5000);
+$db->exec('PRAGMA journal_mode = WAL;');
 $sql = "SELECT * FROM msgvencido";
 $result = $db->query($sql);
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgvencido 	= $row['msg'];}
+$db->close();
 unset($db);
 
 $db = new SQLite3('db/msgdb.sqlite3');
+$db->busyTimeout(5000);
+$db->exec('PRAGMA journal_mode = WAL;');
 $sql = "SELECT * FROM msgpago";
 $result = $db->query($sql);
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {$msgpago 	= $row['msg'];}
+$db->close();
 unset($db);
 ?>
 
@@ -100,7 +118,6 @@ unset($db);
         <h1>Editar msg vencido:</h1>
         <form enctype='multipart/form-data' method=post 
         onsubmit="return confirm('Confirma a edição da mensagem vencida?');">
-    
             <textarea type="text" name="msgvencido" autocomplete="off" required><?php echo $msgvencido; ?></textarea>
             <br><br>
             <button class="button" name="postvencido" type="submit">Salvar modelo<br> msg vencido</button>

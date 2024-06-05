@@ -42,8 +42,15 @@ Recomendo fazer isso em uma máquina virtual nova.
 sudo apt update
 sudo apt install apache2 apache2-utils sqlite3 php php-mysql php-sqlite3 php-curl git
 ```
+
+<br>
+
 <details>
-<summary> Se instalado em Ubuntu ou Debian: </summary>
+<summary>
+
+## Se instalado em Ubuntu ou Debian: Clique Aqui
+
+</summary>
 
 ```sh
 cd /var/www/html/
@@ -51,7 +58,7 @@ sudo git clone https://github.com/usuariomega/mkmsg.git
 cd /var/www/html/mkmsg/
 ```
 
-Dar permissão para poder gravar no banco de dados as mensagens personalizadas e salvar os logs dos envios
+Dar permissão ao Apache para poder gravar no banco de dados as mensagens personalizadas e salvar os logs dos envios
 ```sh
 sudo chown -R www-data:www-data db/
 sudo chown -R www-data:www-data logs/
@@ -59,7 +66,11 @@ sudo chown -R www-data:www-data logs/
 </details>
 
 <details>
-<summary> Se instalado em Mk-Auth: </summary>
+<summary>
+
+## Se instalado no Mk-Auth:  Clique Aqui
+
+</summary>
   
 ```sh
 cd /var/www/
@@ -67,14 +78,24 @@ sudo git clone https://github.com/usuariomega/mkmsg.git
 cd /var/www/mkmsg/
 ```
 
-Dar permissão para poder gravar no banco de dados as mensagens personalizadas
+Dar permissão ao Apache para poder gravar no banco de dados as mensagens personalizadas e salvar os logs dos envios
 
 ```sh
 sudo chown -R www-data:www-data db/
 sudo chown -R www-data:www-data logs/
 ```
+
+Dar permissão ao Apparmor para que o PHP possa ler e gravar no banco de dados as mensagens personalizadas
+
+```sh
+sed -i 's/}$/        \/var\/www\/mkmsg\/** rwk, }/g' /etc/apparmor.d/usr.sbin.php-fpm7.3
+sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.php-fpm7.3
+```
 </details>
 
+<br>
+
+### Prossiga com o resto da instalação comum aos 2 sistemas
 
 ### Criar senha para proteger o acesso ao sistema 
 ```sh
