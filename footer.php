@@ -34,6 +34,7 @@
     <br><br>
     <div class="menu">
         <div><button class="button" name="posttodos" type="submit">Enviar para todos</button></div>
+        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar Logs</button></div>
         <div><button class="button" name="postsel" type="submit" >Enviar para selecionados</button></div>
     </div>
  </form>

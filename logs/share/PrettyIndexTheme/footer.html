@@ -8,22 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-/*
-// grab the 2nd child and add the parent class. tr:nth-child(2)
-document.getElementsByTagName('tr')[1].className = 'parent';
-// fix links when not adding a / at the end of the URI
-var uri = window.location.pathname.substr(1);
-if (uri.substring(uri.length-1) != '/'){
-	var indexes = document.getElementsByClassName('indexcolname'),
-	i = indexes.length;
-	while (i--){
-	    var a = indexes[i].getElementsByTagName('a')[0];
-	    a.href = '/' + uri + '/' + a.getAttribute('href',2);
-	}
-}
-*/
-</script>
 
 <script type="text/javascript">
 // Global variables
@@ -288,10 +272,10 @@ $(document).ready(function() {
 			if (name.indexOf('.') !== -1) {
 				ext = /(?:\.([^.]+))?$/.exec(name)[1].toLowerCase();
 			} else {
-				 if ((name.substr(name.length-1) == "/") || (name == "Parent Directory")) {
+				 if ((name.substr(name.length-1) == "/mkmsg/") || (name == "Voltar")) {
 					ext = "DIR";
 				 } else {
-					ext = "rien";
+					ext = "Nada";
 				 }
 			}
 			

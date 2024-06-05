@@ -69,12 +69,13 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg'; $month  = date("Y-m");
-				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
-				if (!is_dir("$dir/logs/" .$month. "/noprazo")) 	{ mkdir("$dir/logs/" .$month. "/noprazo"); }
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/noprazo")) 		{ mkdir("$dir/logs/" .$month. "/noprazo"); }
+				if (!is_file("$dir/logs/" .$month . "/noprazo/index.php")) { copy("$dir/logs/.ler/index.php", "$dir/logs/" .$month . "/noprazo/index.php"); }
 
-   				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
-                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome,20) . $err . $response ."\n", FILE_APPEND);
+   				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
+                             	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);
             	sleep(rand(30, 300));
             }
 

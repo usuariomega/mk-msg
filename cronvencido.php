@@ -69,12 +69,13 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . '/mkmsg'; $month  = date("Y-m");
-				if (!is_dir("$dir/logs/" .$month))				{ mkdir("$dir/logs/" .$month); }
-				if (!is_dir("$dir/logs/" .$month. "/vencido")) 	{ mkdir("$dir/logs/" .$month. "/vencido"); }
+				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
+				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
+				if (!is_dir("$dir/logs/" .$month. "/vencido")) 		{ mkdir("$dir/logs/" .$month. "/vencido"); }
+				if (!is_file("$dir/logs/" .$month . "/vencido/index.php")) { copy("$dir/logs/.ler/index.php", "$dir/logs/" .$month . "/vencido/index.php"); }
 
-   				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y") . "  " . 
-                             	   date("H:i:s") . "  " . "Enviando mensagem para: " . str_pad($nome,20) . $err . $response ."\n", FILE_APPEND);
+   				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
+                             	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);
             	sleep(rand(30, 300));
             }
 

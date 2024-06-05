@@ -15,15 +15,15 @@ IndexOptions +Charset=UTF-8 -FancyIndexing +IgnoreCase +FoldersFirst +XHTML +HTM
 IndexHeadInsert "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"
 
 # HIDE PRETTY INDEX DIRECTORY
-IndexIgnore .htaccess /logs/share /logs/share/PrettyIndexTheme
+IndexIgnore .htaccess /mkmsg/logs/share /mkmsg/logs/share/PrettyIndexTheme
 
 #
 # THEME FILES
 #
 
-HeaderName /logs/share/PrettyIndexTheme/header.html
-ReadmeName /logs/share/PrettyIndexTheme/footer.html
-IndexStyleSheet /logs/share/PrettyIndexTheme/style.css
+HeaderName /mkmsg/logs/share/PrettyIndexTheme/header.html
+ReadmeName /mkmsg/logs/share/PrettyIndexTheme/footer.html
+IndexStyleSheet /mkmsg/logs/share/PrettyIndexTheme/style.css
 
 #
 # DESCRIPTIONS
