@@ -144,7 +144,7 @@ sudo nano config.php
 
 Mantenha as aspas e mude o usuário e senha em: **nomedousuario** e **suasenha**
 
-Coloque o IP da sua máquina virtual onde roda o sistema MK-MSG em 192.168.0.20 (IP de exemplo, use o IP da sua VM).
+Coloque o IP de onde roda o sistema MK-MSG em **192.168.0.20** (IP de exemplo, use o IP da sua VM).
 
 ### Rode o comando abaixo para criar o usuário com permissão de leitura do banco, cole uma linha por vez:
 
@@ -159,7 +159,7 @@ quit;
 <br>
 
 ### Será necessário mudar o IP do banco de dados. 
-Como o MariaDB do Mk-Auth é antigo, ele só permite adicionar um endereço de IP. Por padrão ele só roda em localhost não permitindo acesso externo. Mude para o IP local do seu MK-Auth.
+Como o MariaDB do Mk-Auth é antigo, ele só permite adicionar um endereço de IP. Por padrão ele só roda em localhost não permitindo acesso externo. Mude para o IP local do seu MK-Auth. Se não souber, digite ifconfig e use o mesmo IP na cofiguração abaixo:
 
 ```
 sudo nano /etc/mysql/conf.d/50-server.cnf 
@@ -169,7 +169,7 @@ bind-address    = 127.0.0.1
 
 Para o ip local do seu servidor Mk-Auth:
 ```
-bind-address    = 192.168.0.10
+bind-address    = 192.168.0.150
 ````
 
 Se quiser deixar aberto para qualquer IP mude para (bind-address    = 0.0.0.0). Não recomendo essa prática por questões de segurança. 
@@ -182,7 +182,7 @@ sudo service mysql restart
 ### No arquivo config.php no sistema MK-MSG mude para:
 
 //IP do MK-Auth
-<br>$servername = "192.168.0.10";
+<br>$servername = "192.168.0.150";
 
 //Usuário do banco de dados do do MK-Auth
 <br>$username 	= "nomedousuario";
