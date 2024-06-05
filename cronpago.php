@@ -86,6 +86,7 @@ if (!empty($_POST)) {
 
 }
 else {echo "Use o Cron para automatizar esse envio.
+			<br>Lembre de mudar <b>suasenha</b> pela senha criada em sudo htpasswd -c /etc/apache2/.htpasswd admin<br>
 			<br>Comando:<br> sudo crontab -e <br>
-			0 9 * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronpago.php > /dev/null 2>&1";}
+			0 9 * * * curl -X POST -F 'posttodos=1' http://admin:suasenha@127.0.0.1/mkmsg/cronpago.php > /dev/null 2>&1";}
 ?>

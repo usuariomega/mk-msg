@@ -203,10 +203,12 @@ Exemplos:
 sudo crontab -e
 ```
 Adicione no final:
+
+Lembre de mudar **suasenha** pela senha criada em sudo htpasswd -c /etc/apache2/.htpasswd admin
 ```
-0 9  * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronnoprazo.php > /dev/null 2>&1
-0 10 * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronvencido.php > /dev/null 2>&1
-0 11 * * * curl -X POST -F 'posttodos=1' http://127.0.0.1/mkmsg/cronpago.php > /dev/null 2>&1
+0 9  * * * curl -X POST -F 'posttodos=1' http://admin:suasenha@127.0.0.1/mkmsg/cronnoprazo.php > /dev/null 2>&1
+0 10 * * * curl -X POST -F 'posttodos=1' http://admin:suasenha@127.0.0.1/mkmsg/cronvencido.php > /dev/null 2>&1
+0 11 * * * curl -X POST -F 'posttodos=1' http://admin:suasenha@127.0.0.1/mkmsg/cronpago.php > /dev/null 2>&1
 ````
 
 Será enviado todos os dias as 9h para mensagens com títulos no prazo, 10h para mensagens com títulos vencidos e 11h para mensagens com títulos pagos.
