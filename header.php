@@ -4,17 +4,22 @@
 <head>
     <title>MK-MSG</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
-    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.7/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.7/datatables.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.8/r-3.0.2/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.8/r-3.0.2/datatables.min.js"></script>
     <script>
     $(document).ready(function() {
         $('#table_id').DataTable({
             order: [
                 [0, 'asc']
             ],
-            select: true,
+            select: false,
             responsive: true,
+                columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 10001, targets: 1 },
+                { responsivePriority: 2, targets: -1 }
+                ],
             pagingType: 'numbers',
             language: {
                 search: "Buscar:",

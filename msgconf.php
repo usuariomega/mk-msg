@@ -82,6 +82,7 @@ unset($db);
             <br>%provedor% para enviar o nome do provedor,
             <br>%nomeresumido% para puxar o nome do cliente,
             <br>%vencimento% para puxar a data de vencimento,
+            <br>%pagamento% para puxar a data de pagamento,
             <br>%linhadig% para puxar a linha digitável do boleto,
             <br>%copiacola% para puxar o PIX copia e cola.
             <br>%site% para enviar o site do provedor.

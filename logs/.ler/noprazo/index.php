@@ -3,17 +3,22 @@
 <head>
     <title>MK-MSG</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
-    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.7/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.7/datatables.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.8/r-3.0.2/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.8/r-3.0.2/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#table_id').DataTable({
                 order: [
                     [0, 'asc']
                 ],
-                select: true,
+                select: false,
                 responsive: true,
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 10001, targets: 1 },
+                    { responsivePriority: 2, targets: -1 }
+                                    ],
                 pagingType: 'numbers',
                 language: {
                     search: "Buscar:",
@@ -33,7 +38,6 @@
                 }
             });
         });
-
     </script>
     <style>
         body {
@@ -96,6 +100,22 @@
             cursor: pointer;
         }
 
+        .button3,
+        .submit {
+            background-color: #395dca;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            width: 180px;
+            height: 50px;
+            padding: 8px 5px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-family: consolas, sans-serif;
+            cursor: pointer;
+        }
+
         div.dt-container div.dt-layout-cell {
             display: inline;
         }
@@ -147,8 +167,10 @@
 <form>
     <div class="menu">
         <button class="button2" onclick="location.href='../noprazo'" type="button">No Prazo</button>
-        <button class="button2" onclick="location.href='../pago'" type="button">Pagos</button>
- 
+        <button class="button3" onclick="location.href='../pago'" type="button">Pagos</button>
+        <button class="button3" onclick="location.href='../vencido'" type="button">Vencidos</button>
+        <button class="button3" onclick="location.href='../../'" type="button">Voltar</button>
+    
             <select class="select1" name="arquivolog">
                 <option value="" selected="selected">Selecione o dia</option>
                 <?php 
@@ -161,11 +183,9 @@
             </select>
             <button class="button" type="submit">ENVIAR</button>
 
-        <button class="button2" onclick="location.href='../vencido'" type="button">Vencidos</button>
-        <button class="button2" onclick="location.href='../../'" type="button">Voltar</button>
     </div>
 </form>
-    <table id="table_id" class="display">
+    <table id="table_id" class="display responsive">
         <thead>
             <tr>
                 <th>Data:</th>

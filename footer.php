@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data" id="form" name="form" method="post" 
 	onsubmit="return confirm('Confirma o Envio? \n\nOBS: Se clicou em enviar a todos, será enviado a todos além dos 10 mostrados por padrão.');">
-    <table id='table_id' class='display'>
+    <table id="table_id" class="display responsive" width="100%">
         <thead>
             <tr>
              <th>NOME:</th>
@@ -34,8 +34,8 @@
     <br><br>
     <div class="menu">
         <div><button class="button" name="posttodos" type="submit">Enviar para todos</button></div>
-        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar Logs</button></div>
         <div><button class="button" name="postsel" type="submit" >Enviar para selecionados</button></div>
+        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar Logs</button></div>
     </div>
  </form>
 </body>

@@ -72,7 +72,7 @@ if (!empty($_POST)) {
 				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
 				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
 				if (!is_dir("$dir/logs/" .$month. "/pago")) 		{ mkdir("$dir/logs/" .$month. "/pago"); }
-				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
+				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/pago/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
 
    				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);

@@ -11,9 +11,9 @@ $result = $conn->query($sqlpago);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $dados[] = array($row["nome_res"], $row["celular"], $row["datavenc"], $row["linhadig"], $row["qrcode"]);
+        $dados[] = array($row["nome_res"], $row["celular"], $row["datavenc"], $row["datapag"], $row["linhadig"], $row["qrcode"]);
     }
-} else { $dados[] = array('Vazio', '-', '-', '-', '-');}
+} else { $dados[] = array('Vazio', '-', '-', '-', '-', '-');}
 $conn->close();
 ?>
 
@@ -23,7 +23,6 @@ $conn->close();
     <button class="button2" onclick="location.href='pago.php'" type="button">Pagos</button>
     <button class="button3" onclick="location.href='msgconf.php'" type="button">Conf. msg</button>
 </div>
-
 
 <div id="overlay" class="overlay">
     <script>
@@ -46,10 +45,10 @@ if (!empty($_POST)) {
 
         if (ob_get_level() == 0) {ob_start();}
 
-        foreach ($dados as list($nome, $celular, $datavenc, $linhadig, $qrcode)) {
+        foreach ($dados as list($nome, $celular, $datavenc, $datapag, $linhadig, $qrcode)) {
 
-            $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
-            $substituir = array($provedor, $nome, $datavenc, $linhadig, $qrcode, $site, '\1 \2');
+            $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%pagamento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
+            $substituir = array($provedor, $nome, $datavenc, $datapag, $linhadig, $qrcode, $site, '\1 \2');
             $msg = preg_replace($buscar, $substituir, $msgpago);
 
             if (isset($_POST['posttodos'])) {
@@ -91,7 +90,7 @@ if (!empty($_POST)) {
 				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
 				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
 				if (!is_dir("$dir/logs/" .$month. "/pago")) 		{ mkdir("$dir/logs/" .$month. "/pago"); }
-				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
+				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/pago/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
 
    				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);
@@ -111,6 +110,7 @@ if (!empty($_POST)) {
         $nome = $_POST['nome'];
         $celular = $_POST['celular'];
         $datavenc = $_POST['datavenc'];
+        $datapag = $_POST['datavenc'];
         $linhadig = $_POST['linhadig'];
         $qrcode = $_POST['qrcode'];
         $check = $_POST['check'];
@@ -127,8 +127,8 @@ if (!empty($_POST)) {
 
         foreach ($nome as $num => $valor) {
 
-            $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
-            $substituir = array($provedor, $nome[$num], $datavenc[$num], $linhadig[$num], $qrcode[$num], $site, '\1 \2');
+            $buscar = array('/%provedor%/', '/%nomeresumido%/', '/%vencimento%/', '/%pagamento%/', '/%linhadig%/', '/%copiacola%/', '/%site%/');
+            $substituir = array($provedor, $nome[$num], $datavenc[$num], $datapag[$num], $linhadig[$num], $qrcode[$num], $site, '\1 \2');
             $msg = preg_replace($buscar, $substituir, $msgpago);
 
             if ($check[$num] == "1") {
@@ -170,7 +170,7 @@ if (!empty($_POST)) {
 				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
 				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
 				if (!is_dir("$dir/logs/" .$month. "/pago")) 		{ mkdir("$dir/logs/" .$month. "/pago"); }
-				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
+				if (!is_file("$dir/logs/" .$month . "/pago/index.php")) { copy("$dir/logs/.ler/pago/index.php", "$dir/logs/" .$month . "/pago/index.php"); }
 
    				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome[$num] . ";" . $err . $response ."\n", FILE_APPEND);
@@ -187,4 +187,52 @@ if (!empty($_POST)) {
 ?>
 </div>
 
-<?php include 'footer.php'; ?>
+<form enctype="multipart/form-data" id="form" name="form" method="post" 
+	onsubmit="return confirm('Confirma o Envio? \n\nOBS: Se clicou em enviar a todos, será enviado a todos além dos 10 mostrados por padrão.');">
+    <table id="table_id" class="display responsive" width="100%">
+        <thead>
+            <tr>
+             <th>NOME:</th>
+             <th>CELULAR:</th>
+             <th>DATA VENC:</th>
+             <th>DATA PAG:</th>
+             <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+          <?php
+          foreach ($dados as list($nome, $celular, $datavenc, $datapag, $linhadig, $qrcode)) {
+          echo "
+                <tr>
+                <td><input type=hidden name='nome[]'		value='$nome'>$nome</td>
+                <td><input type=hidden name='celular[]' 	value='$celular'>$celular</td>
+                <td><input type=hidden name='datavenc[]'	value='$datavenc'>$datavenc</td>
+                <td><input type=hidden name='datapag[]'		value='$datapag'>$datapag</td>
+                <td><input type=hidden name='linhadig[]'	value='$linhadig'>
+                    <input type=hidden name='qrcode[]'		value='$qrcode'>
+                    <input type='hidden' name='check[]' 	value='0'>
+                    <input type='checkbox' class='check' 
+                           onclick='this.previousElementSibling.value=1-this.previousElementSibling.value'>
+                </td>
+                </tr>
+              ";
+          }
+          ?>
+
+        </tbody>
+    </table>
+    <br><br>
+    <div class="menu">
+        <div><button class="button" name="posttodos" type="submit">Enviar para todos</button></div>
+        <div><button class="button" name="postsel" type="submit" >Enviar para selecionados</button></div>
+        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar Logs</button></div>
+    </div>
+ </form>
+</body>
+          
+<script>
+function sleep(time) {return new Promise((resolve) => setTimeout(resolve, time));}
+sleep(2000).then(() => {clearInterval(refreshIntervalId);});
+overlay.style.setProperty('max-height', '200px');
+</script>
