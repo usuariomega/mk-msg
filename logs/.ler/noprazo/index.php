@@ -171,8 +171,8 @@
         <button class="button3" onclick="location.href='../vencido'" type="button">Vencidos</button>
         <button class="button3" onclick="location.href='../../'" type="button">Voltar</button>
     
-            <select class="select1" name="arquivolog">
-                <option value="" selected="selected">Selecione o dia</option>
+            <select class="select1" name="arquivolog" required>
+                <option value="">Selecione o dia</option>
                 <?php 
                 foreach(glob('*.log') as $filename){
 
