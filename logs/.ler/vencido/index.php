@@ -59,7 +59,7 @@
             border: solid 2px #00b32b;
             border-radius: 5px;
             padding: 8px 5px;
-            margin-top: 10px;
+            margin-top: 20px;
             margin-bottom: 20px;
             text-align: center;
             font-size: 16px;
@@ -75,7 +75,7 @@
             width: 180px;
             height: 50px;
             padding: 8px 5px;
-            margin-top: 10px;
+            margin-top: 20px;
             margin-bottom: 20px;
             text-align: center;
             font-size: 16px;
@@ -93,7 +93,6 @@
             height: 50px;
             padding: 8px 5px;
             margin-top: 10px;
-            margin-bottom: 20px;
             text-align: center;
             font-size: 16px;
             font-family: consolas, sans-serif;
