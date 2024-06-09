@@ -54,12 +54,12 @@
 
         .select1 {
             cursor: pointer;
+            width: 160px;
             height: 50px;
-            width: 180px;
             border: solid 2px #00b32b;
             border-radius: 5px;
-            padding: 8px 5px;
-            margin-top: 20px;
+            padding: 5px 5px;
+            margin-top: 10px;
             margin-bottom: 20px;
             text-align: center;
             font-size: 16px;
@@ -72,10 +72,10 @@
             border: none;
             border-radius: 5px;
             color: white;
-            width: 180px;
+            width: 160px;
             height: 50px;
-            padding: 8px 5px;
-            margin-top: 20px;
+            padding: 5px 5px;
+            margin-top: 10px;
             margin-bottom: 20px;
             text-align: center;
             font-size: 16px;
@@ -89,9 +89,9 @@
             border: none;
             border-radius: 5px;
             color: white;
-            width: 180px;
+            width: 160px;
             height: 50px;
-            padding: 8px 5px;
+            padding: 5px 5px;
             margin-top: 10px;
             text-align: center;
             font-size: 16px;
@@ -105,9 +105,9 @@
             border: none;
             border-radius: 5px;
             color: white;
-            width: 180px;
+            width: 160px;
             height: 50px;
-            padding: 8px 5px;
+            padding: 5px 5px;
             margin-top: 10px;
             text-align: center;
             font-size: 16px;
