@@ -4,10 +4,10 @@
 $servername = "127.0.0.1";
 
 //Usuário do banco de dados do do MK-Auth
-$username 	= "root";
+$username 	= "nomedousuario";
 
 //Senha do banco de dados do do MK-Auth
-$password 	= "vertrigo";
+$password 	= "suasenha";
 
 //Nome do banco de dados do do MK-Auth
 $dbname		= "mkradius";
