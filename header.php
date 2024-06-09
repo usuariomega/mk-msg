@@ -55,7 +55,7 @@
 
     .selectmes {
         cursor: pointer;
-        width: 180px;
+        width: 170px;
         height: 50px;
         border: solid 2px #00b32b;
         border-radius: 5px;
@@ -72,7 +72,7 @@
         border: none;
         border-radius: 5px;
         color: white;
-        width: 180px;
+        width: 170px;
         height: 50px;
         padding: 5px 5px;
         margin-top: 10px;
@@ -88,7 +88,7 @@
         border: none;
         border-radius: 5px;
         color: white;
-        width: 180px;
+        width: 170px;
         height: 50px;
         padding: 5px 5px;
         margin-top: 10px;
@@ -104,7 +104,7 @@
         border: none;
         border-radius: 5px;
         color: white;
-        width: 180px;
+        width: 170px;
         height: 50px;
         padding: 5px 5px;
         margin-top: 10px;
