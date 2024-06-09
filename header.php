@@ -25,6 +25,7 @@
                 search: "Buscar:",
                 "lengthMenu": "_MENU_",
                 "zeroRecords": "Sem registros",
+                "emptyTable": "Selecione o mês e clique em enviar no menu acima.",
                 "info": "Página _PAGE_ de _PAGES_",
                 "infoEmpty": "Sem registros disponíveis",
                 "infoFiltered": "(Filtrados de _MAX_ registros)",
@@ -52,18 +53,32 @@
         justify-content: space-between;
     }
 
+    .selectmes {
+        cursor: pointer;
+        width: 180px;
+        height: 50px;
+        border: solid 2px #00b32b;
+        border-radius: 5px;
+        padding: 8px 5px;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 16px;
+        font-family: consolas, sans-serif;
+    }
+
     .button,
     .submit {
         background-color: #00b32b;
-        border: 2px;
+        border: none;
         border-radius: 5px;
         color: white;
         width: 180px;
         height: 50px;
-        margin: 5px;
+        padding: 5px 5px;
+        margin-top: 10px;
         text-align: center;
         font-size: 16px;
-        font-family: sans-serif;
+        font-family: consolas, sans-serif;
         cursor: pointer;
     }
 
@@ -75,7 +90,7 @@
         color: white;
         width: 180px;
         height: 50px;
-        padding: 8px 5px;
+        padding: 5px 5px;
         margin-top: 10px;
         text-align: center;
         font-size: 16px;
@@ -91,7 +106,7 @@
         color: white;
         width: 180px;
         height: 50px;
-        padding: 8px 5px;
+        padding: 5px 5px;
         margin-top: 10px;
         text-align: center;
         font-size: 16px;

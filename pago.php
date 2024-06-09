@@ -1,28 +1,30 @@
-<?php
-include 'header.php';
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
-
-$result = $conn->query($sqlpago);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $dados[] = array($row["nome_res"], $row["celular"], $row["datavenc"], $row["datapag"], $row["linhadig"], $row["qrcode"]);
-    }
-} else { $dados[] = array('Vazio', '-', '-', '-', '-', '-');}
-$conn->close();
-?>
+<?php include 'header.php'; ?>
 
 <div class="menu">
     <button class="button3" onclick="location.href='index.php'" type="button">No prazo</button>
     <button class="button3" onclick="location.href='vencido.php'" type="button">Vencidos</button>
     <button class="button2" onclick="location.href='pago.php'" type="button">Pagos</button>
     <button class="button3" onclick="location.href='msgconf.php'" type="button">Conf. msg</button>
-</div>
+	<form id="formmes" method="get">
+        <select name="menumes" class="selectmes" required>
+			<option value="">Selecione o mês</option>
+			<?php
+				$valorsel = date("m-Y", strtotime("-5 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("-4 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("-3 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("-2 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("-1 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y");						 { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("+1 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("+2 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("+3 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("+4 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+				$valorsel = date("m-Y", strtotime("+5 months")); { echo "<option value=$valorsel>$valorsel</option>"; }
+			?>
+        </select>
+	</form>
+	<button class="button" type="submit" form="formmes">Enviar</button>
+</div> 
 
 <div id="overlay" class="overlay">
     <script>
@@ -31,6 +33,34 @@ $conn->close();
         elem.scrollTop = elem.scrollHeight;
     }, 1000)
     </script>
+
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+if (isset($_GET['menumes'])) {$valorsel = $_GET['menumes'];}
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+
+$result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res, 
+						REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+						DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
+						DATE_FORMAT(vtab_titulos.datapag,'%d/%m/%y') AS `datapag`,
+						vtab_titulos.linhadig, sis_qrpix.qrcode 
+						FROM vtab_titulos 
+						INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo 
+						WHERE DATE_FORMAT(datapag,'%m-%Y') = '$valorsel'
+						AND (vtab_titulos.status = 'pago')
+						ORDER BY nome_res ASC, datavenc ASC;");
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $dados[] = array($row["nome_res"], $row["celular"], $row["datavenc"], $row["datapag"], $row["linhadig"], $row["qrcode"]);
+    }
+} else { $dados[] = array('Vazio', '-', '-', '-', '-', '-');}
+$conn->close();
+?>
 
 <?php
 if (!empty($_POST)) {
