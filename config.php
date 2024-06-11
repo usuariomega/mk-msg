@@ -82,7 +82,7 @@ $cronpago	= "SELECT upper(vtab_titulos.nome_res) as nome_res,
 			   vtab_titulos.linhadig, sis_qrpix.qrcode 
   			   FROM vtab_titulos 
 			   INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo 
-			   WHERE DATE_FORMAT(datavenc,'%d/%m/%y') = DATE_FORMAT(DATE_ADD(CURRENT_DATE(), INTERVAL -$diaspago DAY),'%d/%m/%y')
+			   WHERE DATE_FORMAT(datapag,'%d/%m/%y') = DATE_FORMAT(DATE_ADD(CURRENT_DATE(), INTERVAL -$diaspago DAY),'%d/%m/%y')
         	   AND (vtab_titulos.status = 'pago')
 			   ORDER BY nome_res ASC, datavenc ASC;";
 
