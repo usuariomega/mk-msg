@@ -44,7 +44,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
 $result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res, 
-						REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+						REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
 						DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
 						vtab_titulos.linhadig, sis_qrpix.qrcode 
 						FROM vtab_titulos 
@@ -123,7 +123,7 @@ if (!empty($_POST)) {
 
    				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);
-            	sleep(rand(30, 300));
+            	sleep(rand($tempomin, $tempomax));
             }
 
         }
@@ -203,7 +203,7 @@ if (!empty($_POST)) {
    				file_put_contents("$dir/logs/" .$month. "/vencido/vencido_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome[$num] . ";" . $err . $response ."\n", FILE_APPEND);
                 $existesel = 1;
-            	sleep(rand(30, 300));
+            	sleep(rand($tempomin, $tempomax));
             }
 
         }

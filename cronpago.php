@@ -76,7 +76,7 @@ if (!empty($_POST)) {
 
    				file_put_contents("$dir/logs/" .$month. "/pago/pago_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome . ";" . $err . $response ."\n", FILE_APPEND);
-            	sleep(rand(30, 300));
+            	sleep(rand($tempomin, $tempomax));
             }
 
         }

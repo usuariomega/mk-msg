@@ -21,20 +21,33 @@ $site		= "www.xyz.com.br";
 //IP do MkAuth WhatsApp Send Message
 $mwsm		= "127.0.0.1";
 
-//Quantos dias antes do prazo
+//Envio automático: Quantos dias antes do prazo
+//Para os títulos no prazo
+//Lembre de configurar o cron conforme o tutorial
 $diasnoprazo= 3;
 
-//Quantos dias após vencer
+//Envio automático: Quantos dias após vencer
+//Para os títulos vencidos
+//Lembre de configurar o cron conforme o tutorial
 $diasvencido= 3;
 
-//Quantos dias após pago
+//Envio automático: Quantos dias após pago
+//Para os títulos pagos
+//Lembre de configurar o cron conforme o tutorial
 $diaspago	= 3;
+
+//Tempo de pausa no envio das mensagens entre os clientes
+//Será escolhido um valor entre 10 a 90 segundos conforme valores abaixo
+//Exemplo: Cliente 2 tempo de envio 40 segundos, Cliente 3, tempo de envio 65 segundos
+//Valores em segundos
+$tempomin = 10;
+$tempomax = 90;
 
 
 //Não mexa abaixo!!
 //Consultas SQL para buscar os clientes no prazo, vencidos e pagos
 $sqlnoprazo = "SELECT upper(vtab_titulos.nome_res) as nome_res, 
-			   REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+			   REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
 			   DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
 			   vtab_titulos.linhadig, sis_qrpix.qrcode 
 			   FROM vtab_titulos 
@@ -44,7 +57,7 @@ $sqlnoprazo = "SELECT upper(vtab_titulos.nome_res) as nome_res,
 			   ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronnoprazo = "SELECT upper(vtab_titulos.nome_res) as nome_res, 
-			   REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+			   REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
 			   DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
 			   vtab_titulos.linhadig, sis_qrpix.qrcode 
 			   FROM vtab_titulos 
@@ -54,7 +67,7 @@ $cronnoprazo = "SELECT upper(vtab_titulos.nome_res) as nome_res,
 			   ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronvencido = "SELECT upper(vtab_titulos.nome_res) as nome_res, 
-			   REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+			   REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
 			   DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
 			   vtab_titulos.linhadig, sis_qrpix.qrcode 
 			   FROM vtab_titulos 
@@ -64,7 +77,7 @@ $cronvencido = "SELECT upper(vtab_titulos.nome_res) as nome_res,
 			   ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronpago	= "SELECT upper(vtab_titulos.nome_res) as nome_res, 
-			   REGEXP_REPLACE(vtab_titulos.celular,'[()-]+','') AS `celular`, 
+			   REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
 			   DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
 			   vtab_titulos.linhadig, sis_qrpix.qrcode 
   			   FROM vtab_titulos 

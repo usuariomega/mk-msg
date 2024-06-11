@@ -95,7 +95,7 @@ if (!empty($_POST)) {
 
    				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome . ";" . $err . $response . PHP_EOL, FILE_APPEND);
-            	sleep(rand(30, 300));
+            	sleep(rand($tempomin, $tempomax));
             }
 
         }
@@ -175,7 +175,7 @@ if (!empty($_POST)) {
 
    				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
                              	   date("H:i:s;") . $nome[$num] . ";" . $err . $response . PHP_EOL, FILE_APPEND);
-            	sleep(rand(30, 300));
+            	sleep(rand($tempomin, $tempomax));
             }
 
         }
