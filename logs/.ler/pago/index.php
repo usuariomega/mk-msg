@@ -53,7 +53,7 @@
         }
 
         .select1 {
-            cursor: pointer;
+            background-color: #ffffff;
             width: 160px;
             height: 50px;
             border: solid 2px #00b32b;
@@ -64,6 +64,7 @@
             text-align: center;
             font-size: 16px;
             font-family: consolas, sans-serif;
+            cursor: pointer;
         }
 
         .button,
@@ -173,14 +174,16 @@
             <select class="select1" name="arquivolog" required>
                 <option value="">Selecione o dia</option>
                 <?php 
-                foreach(glob('*.log') as $filename){
-
-                        $filename = basename($filename);
-                        echo "<option value='" . $filename . "'>".$filename."</option>";
-                    }
+                foreach(glob('*.log') as $filename){ 
+                    $filename = basename($filename);
+                    if  (isset($_GET['arquivolog']) && $_GET['arquivolog']==$filename)
+                        { echo "<option value='" . $filename . "' selected>".$filename."</option>";  } 
+                    else
+                        { echo "<option value='" . $filename . "'>".$filename."</option>";  }
+                   }
                 ?>
             </select>
-            <button class="button" type="submit">ENVIAR</button>
+            <button class="button" type="submit">Enviar</button>
 
     </div>
 </form>
@@ -195,14 +198,14 @@
         </thead>
         <tbody>
             <?php
-	            if ( isset( $_GET["arquivolog"] )) {
+                if ( isset( $_GET["arquivolog"] )) {
                 $file = fopen($_GET["arquivolog"], "r") or die("Não foi possível carregar o arquivo!");
                     while($resultorig = fgets($file)) {
                         if (!feof($file)) {
-							$buscar = array('/{"Status":"Success".*/', '/{"Status":"Fail".*/');
-							$substituir = array('Enviado com sucesso!','Erro ao enviar!','\1 \2');
-							$result = preg_replace($buscar,$substituir,$resultorig);
-            	            list($data, $hora, $nome, $resultado) = array_pad(explode(";", $result), 4, null);
+                            $buscar = array('/{"Status":"Success".*/', '/{"Status":"Fail".*/');
+                            $substituir = array('Enviado com sucesso!','Erro ao enviar!','\1 \2');
+                            $result = preg_replace($buscar,$substituir,$resultorig);
+                            list($data, $hora, $nome, $resultado) = array_pad(explode(";", $result), 4, null);
             ?>
         <tr>
             <td><?=$data ?></td>
@@ -211,7 +214,7 @@
             <td><?=$resultado ?></td>
         </tr>
             <?php
-        				}
+                        }
                     }
                 fclose($file);
                 }

@@ -54,7 +54,7 @@
     }
 
     .selectmes {
-        cursor: pointer;
+        background-color: #ffffff;
         width: 160px;
         height: 50px;
         border: solid 2px #00b32b;
@@ -64,6 +64,7 @@
         text-align: center;
         font-size: 16px;
         font-family: consolas, sans-serif;
+        cursor: pointer;
     }
 
     .button,

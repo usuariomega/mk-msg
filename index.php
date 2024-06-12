@@ -88,14 +88,14 @@ if (!empty($_POST)) {
 
                 ob_flush();
                 flush();
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
-				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
-				if (!is_dir("$dir/logs/" .$month. "/noprazo")) 		{ mkdir("$dir/logs/" .$month. "/noprazo"); }
-				if (!is_file("$dir/logs/" .$month . "/noprazo/index.php")) { copy("$dir/logs/.ler/noprazo/index.php", "$dir/logs/" .$month . "/noprazo/index.php"); }
 
-   				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
-                             	   date("H:i:s;") . $nome . ";" . $err . $response . PHP_EOL, FILE_APPEND);
-            	sleep(rand($tempomin, $tempomax));
+                $root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
+                if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
+                if (!is_dir("$dir/logs/" .$month. "/noprazo")) 		{ mkdir("$dir/logs/" .$month. "/noprazo"); }
+                if (!is_file("$dir/logs/" .$month . "/noprazo/index.php")) { copy("$dir/logs/.ler/noprazo/index.php", "$dir/logs/" .$month . "/noprazo/index.php"); }
+                file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . date("H:i:s;") . $nome . ";" . $err . $response . PHP_EOL, FILE_APPEND);
+
+                sleep(rand($tempomin, $tempomax));
             }
 
         }
@@ -168,14 +168,14 @@ if (!empty($_POST)) {
                 ob_flush();
                 flush();
                 $existesel = 1;
-				$root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
-				if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
-				if (!is_dir("$dir/logs/" .$month. "/noprazo")) 		{ mkdir("$dir/logs/" .$month. "/noprazo"); }
-				if (!is_file("$dir/logs/" .$month . "/noprazo/index.php")) { copy("$dir/logs/.ler/noprazo/index.php", "$dir/logs/" .$month . "/noprazo/index.php"); }
 
-   				file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . 
-                             	   date("H:i:s;") . $nome[$num] . ";" . $err . $response . PHP_EOL, FILE_APPEND);
-            	sleep(rand($tempomin, $tempomax));
+                $root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
+                if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
+                if (!is_dir("$dir/logs/" .$month. "/noprazo")) 		{ mkdir("$dir/logs/" .$month. "/noprazo"); }
+                if (!is_file("$dir/logs/" .$month . "/noprazo/index.php")) { copy("$dir/logs/.ler/noprazo/index.php", "$dir/logs/" .$month . "/noprazo/index.php"); }
+                file_put_contents("$dir/logs/" .$month. "/noprazo/noprazo_" . date("d-M-Y") . ".log", date("d-M-Y;") . date("H:i:s;") . $nome[$num] . ";" . $err . $response . PHP_EOL, FILE_APPEND);
+
+                sleep(rand($tempomin, $tempomax));
             }
 
         }
