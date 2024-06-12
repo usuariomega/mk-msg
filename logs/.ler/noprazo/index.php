@@ -197,8 +197,11 @@
             <?php
 	            if ( isset( $_GET["arquivolog"] )) {
                 $file = fopen($_GET["arquivolog"], "r") or die("Não foi possível carregar o arquivo!");
-                    while($result = fgets($file)) {
-                        if (!feof($file)) {  
+                    while($resultorig = fgets($file)) {
+                        if (!feof($file)) {
+							$buscar = array('/{"Status":"Success".*/', '/{"Status":"Fail".*/');
+							$substituir = array('Enviado com sucesso!','Erro ao enviar!','\1 \2');
+							$result = preg_replace($buscar,$substituir,$resultorig);
             	            list($data, $hora, $nome, $resultado) = array_pad(explode(";", $result), 4, null);
             ?>
         <tr>
