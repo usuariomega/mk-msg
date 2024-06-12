@@ -1,25 +1,30 @@
 # Sistema MK-MSG
 
-Sistema simples com integração entre MK-Auth e o sistema de envio de mensagens por WhatsApp. Isso foi necessário porque o envio de SMS no MK-Auth não funciona nas versões mais novas.
+Sistema simples com integração entre MK-Auth e o sistema de envio de mensagens por WhatsApp Mwsm.
 
-OBS: O sistema só vai mostrar os dados do mês e ano atual.
-<br>
-
-**Painel:**
-<br>
-![MK-MSG](https://github.com/usuariomega/mkmsg/assets/70543919/f0ea5018-c46d-4ccb-a538-debe50d3cde6)
+Permite o envio de mensagens para todos os clientes com títulos no prazo, vencido ou pagos de forma manual ou automática.
 
 <br>
 
-**Envio:**
-<br>
-<img width="660" alt="MK-MSG2" src="https://github.com/usuariomega/mkmsg/assets/70543919/09aff231-7819-4d5f-b37d-fe5033244154">
+### Painel:
+![Screenshot 2024-06-12 at 19-48-26 MK-MSG](https://github.com/usuariomega/mkmsg/assets/70543919/1b6e63d0-000e-4c11-b502-24325bb34e79)
 
 <br>
 
-**Resultado:**
+### Envio:
+![Screenshot 2024-06-12 at 19-53-18 MK-MSG](https://github.com/usuariomega/mkmsg/assets/70543919/732f8471-bff2-40a7-acd2-e8b5f57ce0e8)
+
 <br>
+
+### Resultado:
 <img width="346" alt="MK-MSG3" src="https://github.com/usuariomega/mkmsg/assets/70543919/e8ea8926-181b-4624-a02f-b7f7062c43ff">
+
+<br>
+<br>
+<br>
+
+### Leitor de Logs:
+![Screenshot 2024-06-12 at 19-55-05 MK-MSG](https://github.com/usuariomega/mkmsg/assets/70543919/5aad9b05-11b2-4aef-aaaa-e9a3155792c9)
 
 <br>
 
