@@ -17,9 +17,9 @@ Permite o envio de mensagens para todos os clientes com títulos no prazo, venci
 <br>
 
 ### Resultado:
-<img width="450" alt="MK-MSG3" src="https://github.com/usuariomega/mkmsg/assets/70543919/e8ea8926-181b-4624-a02f-b7f7062c43ff">
+![Screenshot-WhatsApp](https://github.com/usuariomega/mkmsg/assets/70543919/2241b4e7-df87-4111-89ed-5ce4fc035b8c)
 
-<br>
+
 <br>
 <br>
 
