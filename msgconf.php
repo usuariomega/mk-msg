@@ -111,7 +111,7 @@ unset($db);
         onsubmit="return confirm('Confirma a edição da mensagem no prazo?');">
             <textarea type="text" name="msgnoprazo" autocomplete="off" required><?php echo $msgnoprazo; ?></textarea>
             <br><br>
-            <button class="button" name="postnoprazo" type="submit"Salvar modelo<br> msg no prazo</button>
+            <button class="button" name="postnoprazo" type="submit">Salvar modelo<br> msg no prazo</button>
             <br><br>
         </form>
     </div>
