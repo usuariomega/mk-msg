@@ -34,7 +34,7 @@
 			?>
         </select>
 	</form>
-	<button class="button" type="submit" form="formmes">Enviar</button>
+	<button class="button" type="submit" form="formmes">Selecionar mês</button>
 </div> 
 
 <div id="overlay" class="overlay">
@@ -267,7 +267,7 @@ if (!empty($_POST)) {
     <div class="menu">
         <div><button class="button" name="posttodos" type="submit">Enviar para todos</button></div>
         <div><button class="button" name="postsel" type="submit" >Enviar para selecionados</button></div>
-        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar Logs</button></div>
+        <div><button class="button" onclick="window.open('logs/', '_blank')" type="button">Verificar logs</button></div>
     </div>
  </form>
 </body>

@@ -183,7 +183,7 @@
                    }
                 ?>
             </select>
-            <button class="button" type="submit">Enviar</button>
+            <button class="button" type="submit">Abrir</button>
 
     </div>
 </form>

@@ -34,7 +34,7 @@
 			?>
         </select>
 	</form>
-	<button class="button" type="submit" form="formmes">Enviar</button>
+	<button class="button" type="submit" form="formmes">Selecionar mês</button>
 </div> 
 
 <div id="overlay" class="overlay">
