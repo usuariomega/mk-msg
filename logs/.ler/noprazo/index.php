@@ -24,7 +24,7 @@
                     search: "Buscar:",
                     "lengthMenu": "_MENU_",
                     "zeroRecords": "Sem registros",
-                	"emptyTable": "Selecione o dia e clique em enviar no menu acima.",
+                	"emptyTable": "Selecione o dia e clique em abrir no menu acima.",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "Sem registros disponíveis",
                     "infoFiltered": "(Filtrados de _MAX_ registros)",

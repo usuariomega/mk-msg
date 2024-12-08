@@ -53,6 +53,7 @@ $sqlnoprazo    = "SELECT upper(vtab_titulos.nome_res) as nome_res,
                  INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                  WHERE DATE_FORMAT(datavenc,'%y-%m') = DATE_FORMAT(NOW(),'%y-%m')
                  AND (vtab_titulos.status = 'aberto')
+                 AND (vtab_titulos.cli_ativado = 's')
                  ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronnoprazo   = "SELECT upper(vtab_titulos.nome_res) as nome_res,
@@ -63,6 +64,7 @@ $cronnoprazo   = "SELECT upper(vtab_titulos.nome_res) as nome_res,
                  INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                  WHERE DATE_FORMAT(datavenc,'%d/%m/%y') = DATE_FORMAT(DATE_ADD(CURRENT_DATE(), INTERVAL +$diasnoprazo DAY),'%d/%m/%y')
                  AND (vtab_titulos.status = 'aberto')
+                 AND (vtab_titulos.cli_ativado = 's')
                  ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronvencido   = "SELECT upper(vtab_titulos.nome_res) as nome_res,
@@ -73,6 +75,7 @@ $cronvencido   = "SELECT upper(vtab_titulos.nome_res) as nome_res,
                  INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                  WHERE DATE_FORMAT(datavenc,'%d/%m/%y') = DATE_FORMAT(DATE_ADD(CURRENT_DATE(), INTERVAL -$diasvencido DAY),'%d/%m/%y')
                  AND (vtab_titulos.status = 'vencido')
+                 AND (vtab_titulos.cli_ativado = 's')
                  ORDER BY nome_res ASC, datavenc ASC;";
 
 $cronpago      = "SELECT upper(vtab_titulos.nome_res) as nome_res,
@@ -83,6 +86,7 @@ $cronpago      = "SELECT upper(vtab_titulos.nome_res) as nome_res,
                  INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                  WHERE DATE_FORMAT(datapag,'%d/%m/%y') = DATE_FORMAT(DATE_ADD(CURRENT_DATE(), INTERVAL -$diaspago DAY),'%d/%m/%y')
                  AND (vtab_titulos.status = 'pago')
+                 AND (vtab_titulos.cli_ativado = 's')
                  ORDER BY nome_res ASC, datapag ASC;";
 
 ?>

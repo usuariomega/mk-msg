@@ -62,6 +62,7 @@ $result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res,
                         INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo 
                         WHERE DATE_FORMAT(datavenc,'%m-%Y') = '$valorsel'
                         AND (vtab_titulos.status = 'vencido')
+                        AND (vtab_titulos.cli_ativado = 's')
                         ORDER BY nome_res ASC, datavenc ASC;");
 
 if ($result->num_rows > 0) {
