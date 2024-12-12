@@ -9,33 +9,33 @@
         <select name="menumes" class="selectmes" required>
 			<option value="">Selecione o mês</option>
 			<?php
-				$valorsel = date("m-Y", strtotime("-5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y");						 if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y");						 if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
 			?>
         </select>
 	</form>
 	<button class="button" type="submit" form="formmes">Selecionar mês</button>
-</div> 
+</div>
 
 <div id="overlay" class="overlay">
     <script>
@@ -54,12 +54,12 @@ if (isset($_GET['menumes'])) {$valorsel = $_GET['menumes'];}
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
-$result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res, 
-                        REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
+$result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res,
+                        REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`,
                         DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
-                        vtab_titulos.linhadig, sis_qrpix.qrcode 
-                        FROM vtab_titulos 
-                        INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo 
+                        vtab_titulos.linhadig, sis_qrpix.qrcode
+                        FROM vtab_titulos
+                        INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                         WHERE DATE_FORMAT(datavenc,'%m-%Y') = '$valorsel'
                         AND (vtab_titulos.status = 'vencido')
                         AND (vtab_titulos.cli_ativado = 's')
@@ -208,7 +208,7 @@ if (!empty($_POST)) {
                 ob_flush();
                 flush();
                 $existesel = 1;
-            
+
                 $root = $_SERVER["DOCUMENT_ROOT"]; $dir = $root . "/mkmsg"; $month  = date("Y-m");
                 if (!is_dir("$dir/logs/" .$month))					{ mkdir("$dir/logs/" .$month); }
                 if (!is_dir("$dir/logs/" .$month. "/vencido")) 		{ mkdir("$dir/logs/" .$month. "/vencido"); }

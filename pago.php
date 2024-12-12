@@ -9,33 +9,33 @@
         <select name="menumes" class="selectmes" required>
 			<option value="">Selecione o mês</option>
 			<?php
-				$valorsel = date("m-Y", strtotime("-5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("-1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y");						 if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y");						 if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel) 
+				$valorsel = date("m-Y", strtotime("+5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
 			?>
         </select>
 	</form>
 	<button class="button" type="submit" form="formmes">Selecionar mês</button>
-</div> 
+</div>
 
 <div id="overlay" class="overlay">
     <script>
@@ -54,13 +54,13 @@ if (isset($_GET['menumes'])) {$valorsel = $_GET['menumes'];}
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
-$result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res, 
-                        REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`, 
+$result = $conn->query("SELECT upper(vtab_titulos.nome_res) as nome_res,
+                        REGEXP_REPLACE(vtab_titulos.celular,'[( )-]+','') AS `celular`,
                         DATE_FORMAT(vtab_titulos.datavenc,'%d/%m/%y') AS `datavenc`,
                         DATE_FORMAT(vtab_titulos.datapag,'%d/%m/%y') AS `datapag`,
-                        vtab_titulos.linhadig, sis_qrpix.qrcode 
-                        FROM vtab_titulos 
-                        INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo 
+                        vtab_titulos.linhadig, sis_qrpix.qrcode
+                        FROM vtab_titulos
+                        INNER JOIN sis_qrpix ON vtab_titulos.uuid_lanc = sis_qrpix.titulo
                         WHERE DATE_FORMAT(datapag,'%m-%Y') = '$valorsel'
                         AND (vtab_titulos.status = 'pago')
                         AND (vtab_titulos.cli_ativado = 's')
@@ -222,14 +222,14 @@ if (!empty($_POST)) {
 
         }
         ob_end_flush();
-        if (isset($_POST['postsel']) && ($existesel == 1)) {echo "<p><font size='5'>Fim do envio!<br></font></p>";} 
+        if (isset($_POST['postsel']) && ($existesel == 1)) {echo "<p><font size='5'>Fim do envio!<br></font></p>";}
     	elseif (isset($_POST['postsel']) && ($existesel == 0)) {echo "<p><font size='5'>Nenhum item marcado!<br></font></p>";}
     }
 }
 ?>
 </div>
 
-<form enctype="multipart/form-data" id="form" name="form" method="post" 
+<form enctype="multipart/form-data" id="form" name="form" method="post"
 	onsubmit="return confirm('Confirma o Envio? \n\nOBS: Se clicou em enviar a todos, será enviado a todos além dos 10 mostrados por padrão.');">
     <table id="table_id" class="display responsive" width="100%">
         <thead>
@@ -254,7 +254,7 @@ if (!empty($_POST)) {
                 <td><input type=hidden name='linhadig[]'	value='$linhadig'>
                     <input type=hidden name='qrcode[]'		value='$qrcode'>
                     <input type='hidden' name='check[]' 	value='0'>
-                    <input type='checkbox' class='check' 
+                    <input type='checkbox' class='check'
                            onclick='this.previousElementSibling.value=1-this.previousElementSibling.value'>
                 </td>
                 </tr>
@@ -272,7 +272,7 @@ if (!empty($_POST)) {
     </div>
  </form>
 </body>
-          
+
 <script>
 function sleep(time) {return new Promise((resolve) => setTimeout(resolve, time));}
 sleep(2000).then(() => {clearInterval(refreshIntervalId);});

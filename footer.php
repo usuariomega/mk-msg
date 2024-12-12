@@ -39,7 +39,7 @@
     </div>
  </form>
 </body>
-          
+
 <script>
 function sleep(time) {return new Promise((resolve) => setTimeout(resolve, time));}
 sleep(2000).then(() => {clearInterval(refreshIntervalId);});

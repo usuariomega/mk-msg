@@ -21,6 +21,9 @@ $site		   = "www.xyz.com.br";
 //IP do MkAuth WhatsApp Send Message
 $mwsm		   = "127.0.0.1";
 
+//Ajusta fuso horário do PHP
+date_default_timezone_set('America/Sao_Paulo');
+
 //Envio automático: Quantos dias antes do prazo
 //Para os títulos no prazo
 //Lembre de configurar o cron conforme o tutorial

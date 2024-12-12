@@ -107,7 +107,7 @@ unset($db);
     </div>
     <div>
         <h1>Editar msg no prazo:</h1>
-        <form enctype='multipart/form-data' method=post 
+        <form enctype='multipart/form-data' method=post
         onsubmit="return confirm('Confirma a edição da mensagem no prazo?');">
             <textarea type="text" name="msgnoprazo" autocomplete="off" required><?php echo $msgnoprazo; ?></textarea>
             <br><br>
@@ -117,7 +117,7 @@ unset($db);
     </div>
     <div>
         <h1>Editar msg vencido:</h1>
-        <form enctype='multipart/form-data' method=post 
+        <form enctype='multipart/form-data' method=post
         onsubmit="return confirm('Confirma a edição da mensagem vencida?');">
             <textarea type="text" name="msgvencido" autocomplete="off" required><?php echo $msgvencido; ?></textarea>
             <br><br>
@@ -127,7 +127,7 @@ unset($db);
     </div>
     <div>
         <h1>Editar msg pago:</h1>
-        <form enctype='multipart/form-data' method=post 
+        <form enctype='multipart/form-data' method=post
         onsubmit="return confirm('Confirma a edição da mensagem paga?');">
             <textarea type="text" name="msgpago" autocomplete="off" required><?php echo $msgpago; ?></textarea>
             <br><br>
