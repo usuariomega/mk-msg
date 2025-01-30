@@ -9,27 +9,27 @@
         <select name="menumes" class="selectmes" required>
 			<option value="">Selecione o mês</option>
 			<?php
-				$valorsel = date("m-Y", strtotime("-5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of -5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of -4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of -3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of -2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("-1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of -1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y");						 if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y");				      if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of +1 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of +2 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of +3 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of +4 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
-				$valorsel = date("m-Y", strtotime("+5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
+				$valorsel = date("m-Y", strtotime("first day of +5 months")); if (isset($_GET['menumes']) && $_GET['menumes']==$valorsel)
 				{ echo "<option value=$valorsel selected>$valorsel</option>"; } else { echo "<option value=$valorsel>$valorsel</option>"; }
 			?>
         </select>
